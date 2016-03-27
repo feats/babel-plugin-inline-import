@@ -1,25 +1,28 @@
 var template = require('babel-template');
 
-var buildIIFE = template(';(function () {\nBODY;\n})();');
+var buildIife = template(';(function () {\nBODY;\n})();');
 
 module.exports = function (babel) {
 	var t = babel.types;
 
 	return {
+		inherits: require("babel-plugin-transform-strict-mode"),
+
 		visitor: {
 			Program: {
 				exit: function (path) {
-					if (this.run) {
-						return;
-					}
-					this.run = true;
+					if (!this.runIife) {
+						this.runIife = true;
+						var iife = buildIife({
+							BODY: path.node.body
+						});
+						iife[1].expression.callee.body.directives = path.node.directives;
 
-					var iife = buildIIFE({
-						BODY: path.node.body
-					});
-					path.replaceWith(
-						t.program(iife)
-					);
+						path.replaceWith(
+							t.program(iife)
+						);
+					}
+					path.node.directives = [];
 				}
 			}
 		}

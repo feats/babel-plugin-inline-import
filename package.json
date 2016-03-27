@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/trysound/babel-plugin-iife-wrap#readme",
   "dependencies": {
+    "babel-plugin-transform-strict-mode": "^6.6.5",
     "babel-template": "^6.7.0"
   },
   "devDependencies": {

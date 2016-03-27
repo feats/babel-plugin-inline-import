@@ -1,6 +1,5 @@
 import test from 'ava';
 import plugin from './';
-import strictMode from 'babel-plugin-transform-strict-mode';
 import { transform } from 'babel-core';
 
 test('should wrap code with iife', t => {

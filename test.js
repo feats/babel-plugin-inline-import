@@ -2,14 +2,10 @@ import test from 'ava';
 import plugin from './';
 import { transform } from 'babel-core';
 
-test('should wrap code with iife', t => {
-	var fixture = 'window.a = 1;';
-	var expected = ';\n\n(function () {\n  "use strict";\n\n  window.a = 1;\n})();';
-	t.is(transform(fixture, { plugins: [plugin] }).code, expected);
-});
+test('should wrap code with exports', (t) => {
+	const fixture = 'foo';
+	const expected = 'module.exports = `foo`;';
 
-test('should process correctly existing strict mode', t => {
-	var fixture = '"use strict"; window.a = 1;';
-	var expected = ';\n\n(function () {\n  "use strict";\n  window.a = 1;\n})();';
-	t.is(transform(fixture, { plugins: [plugin] }).code, expected);
+	const { code } = transform(fixture, { plugins: [plugin] });
+	t.is(code, expected);
 });

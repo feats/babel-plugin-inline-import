@@ -1,10 +1,7 @@
 const template = require('babel-template');
-const inherits = require("babel-plugin-transform-strict-mode");
-
 const build = template(';(function () {\nBODY;\n})();');
 
 module.exports = (babel) => ({
-	inherits,
 	visitor: {
 		Program: {
 			exit: (path) => {
@@ -21,7 +18,7 @@ module.exports = (babel) => ({
 				}
 
 				path.node.directives = [];
-			}
-		}
+			},
+		},
 	},
 });

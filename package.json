@@ -24,7 +24,6 @@
   },
   "homepage": "https://github.com/Quadric/babel-plugin-graphql-raw#readme",
   "dependencies": {
-    "babel-plugin-transform-strict-mode": "^6.11.3",
     "babel-template": "^6.14.0"
   },
   "devDependencies": {

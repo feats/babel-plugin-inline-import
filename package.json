@@ -15,7 +15,7 @@
     "graphql",
     "raw",
     "extension",
-    "wrap",
+    "wrap"
   ],
   "author": "Quadric ApS <contact@quadric.net>",
   "license": "MIT",
@@ -24,11 +24,11 @@
   },
   "homepage": "https://github.com/Quadric/babel-plugin-graphql-raw#readme",
   "dependencies": {
-    "babel-plugin-transform-strict-mode": "^6.6.5",
-    "babel-template": "^6.7.0"
+    "babel-plugin-transform-strict-mode": "^6.11.3",
+    "babel-template": "^6.14.0"
   },
   "devDependencies": {
-    "ava": "^0.13.0",
-    "babel-core": "^6.7.2"
+    "ava": "^0.16.0",
+    "babel-core": "^6.14.0"
   }
 }

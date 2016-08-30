@@ -1,26 +1,28 @@
 {
-  "name": "babel-plugin-iife-wrap",
-  "version": "1.1.0",
-  "description": "Babel plugin to wrap file with iife",
+  "name": "babel-plugin-graphql-raw",
+  "version": "1.0.0",
+  "description": "Babel plugin to make raw graphql files importable",
   "main": "index.js",
   "scripts": {
     "test": "ava"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/trysound/babel-plugin-iife-wrap.git"
+    "url": "git+https://github.com/Quadric/babel-plugin-graphql-raw.git"
   },
   "keywords": [
     "babel-plugin",
-    "iife",
-    "wrap"
+    "graphql",
+    "raw",
+    "extension",
+    "wrap",
   ],
-  "author": "Bogdan Chadkin <trysound@yandex.ru>",
+  "author": "Quadric ApS <contact@quadric.net>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/trysound/babel-plugin-iife-wrap/issues"
+    "url": "https://github.com/Quadric/babel-plugin-graphql-raw/issues"
   },
-  "homepage": "https://github.com/trysound/babel-plugin-iife-wrap#readme",
+  "homepage": "https://github.com/Quadric/babel-plugin-graphql-raw#readme",
   "dependencies": {
     "babel-plugin-transform-strict-mode": "^6.6.5",
     "babel-template": "^6.7.0"

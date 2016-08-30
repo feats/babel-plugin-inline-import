@@ -1,14 +1,14 @@
-# babel-plugin-iife-wrap [![Build Status](https://travis-ci.org/TrySound/babel-plugin-iife-wrap.svg?branch=master)](https://travis-ci.org/TrySound/babel-plugin-iife-wrap)
+# babel-plugin-graphql-raw [![Build Status](https://travis-ci.org/Quadric/babel-plugin-graphql-raw.svg?branch=master)](https://travis-ci.org/Quadric/babel-plugin-graphql-raw)
 
 > Wrap file with iife.
 
 
 ## Install
 
-With [npm](https://npmjs.org/package/babel-plugin-iife-wrap) do:
+With [npm](https://npmjs.org/package/babel-plugin-graphql-raw) do:
 
 ```
-npm i babel-plugin-iife-wrap --D
+npm i babel-plugin-graphql-raw --D
 ```
 
 
@@ -35,7 +35,7 @@ In your Babel configuration:
 
 ```json
 {
-  "plugins": ["iife-wrap"]
+  "plugins": ["graphql-raw"]
 }
 ```
 
@@ -48,4 +48,4 @@ to cover it.
 
 ## License
 
-MIT © [Bogdan Chadkin](https://github.com/trysound)
+MIT © [Quadric ApS](https://github.com/Quadric)

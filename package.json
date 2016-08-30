@@ -4,7 +4,7 @@
   "description": "Babel plugin to make raw graphql files importable",
   "main": "index.js",
   "scripts": {
-    "test": "ava"
+    "test": "ava ./tests"
   },
   "repository": {
     "type": "git",

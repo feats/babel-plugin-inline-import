@@ -1,24 +1,20 @@
-const template = require('babel-template');
-const build = template(';(function () {\nBODY;\n})();');
-
 module.exports = (babel) => ({
 	visitor: {
-		Program: {
-			exit: (path) => {
-				if (!this.run) {
-					this.run = true;
-					const ast = build({
-						BODY: path.node.body
-					});
-					ast[1].expression.callee.body.directives = path.node.directives;
+		Program(path) {
+			const t = babel.types;
 
-					path.replaceWith(
-						babel.types.program(ast)
-					);
-				}
+			if (this.done) {
+				return;
+			}
 
-				path.node.directives = [];
-			},
+			const code = t.stringLiteral(path.hub.file.code);
+			const exportDeclaration = t.exportDefaultDeclaration(code);
+			const program = t.program([
+				exportDeclaration
+			]);
+
+			path.replaceWith(program);
+			this.done = true;
 		},
 	},
 });

@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-inline-import",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Babel plugin to make raw files importable",
   "author": "Victor Duarte (Quadric ApS) <contact@quadric.net>",
   "license": "MIT",

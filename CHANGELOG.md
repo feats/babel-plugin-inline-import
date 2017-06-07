@@ -1,5 +1,9 @@
 # ChangeLog
 
+### v2.0.5
+
+Remove forgotten `debugger` statement in the built files [#5](https://github.com/Quadric/babel-plugin-inline-import/issues/5)
+
 ### v2.0.4
 
 Add support for Meteor projects.

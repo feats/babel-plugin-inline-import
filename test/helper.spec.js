@@ -8,6 +8,7 @@ describe('Babel Inline Import - Helper', () => {
         '.raw',
         '.text',
         '.graphql',
+        '.graphqls',
       ]);
     });
 

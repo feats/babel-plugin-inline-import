@@ -7,6 +7,7 @@ export default class BabelInlineImportHelper {
     '.raw',
     '.text',
     '.graphql',
+    '.graphqls',
   ];
 
   static root = global.rootPath || process.cwd();

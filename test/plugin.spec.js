@@ -9,7 +9,7 @@ describe('Babel Inline Import - Plugin', () => {
         plugins: [BabelInlineImportPlugin]
       });
 
-      expect(transformedCode.code).to.equal(`var SomeExample = 'a raw content\\n';`);
+      expect(transformedCode.code).to.equal(`/* babel-plugin-inline-import './fixtures/example.raw' */var SomeExample = 'a raw content\\n';`);
     });
 
     it('accepts different extensions', () => {
@@ -24,7 +24,7 @@ describe('Babel Inline Import - Plugin', () => {
         ]]
       });
 
-      expect(transformedCode.code).to.equal(`var SomeExample = 'print 1 + 1\\n';`);
+      expect(transformedCode.code).to.equal(`/* babel-plugin-inline-import './fixtures/example.py' */var SomeExample = 'print 1 + 1\\n';`);
     });
 
     it('throws error when importing with destructuring', () => {

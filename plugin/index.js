@@ -25,9 +25,17 @@ export default function({ types: t }) {
                 const content = BabelInlineImportHelper.getContents(givenPath, reference);
                 const variable = t.variableDeclarator(t.identifier(id), t.stringLiteral(content));
 
-                path.replaceWith(
-                  t.variableDeclaration('const', [variable])
-                );
+                path.replaceWith({
+                  type: 'VariableDeclaration',
+                  kind: 'const',
+                  declarations: [variable],
+                  leadingComments: [
+                    {
+                      type: 'CommentBlock',
+                      value: ` babel-plugin-inline-import '${givenPath}' `
+                    }
+                  ]
+                });
               }
             }
           }

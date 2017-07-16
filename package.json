@@ -22,7 +22,7 @@
     "test": "mocha test/*.spec.js --require config/mocha.js --compilers js:babel-core/register",
     "test-watch": "mocha test/*.spec.js --require config/mocha.js --compilers js:babel-core/register --watch",
     "lint-js": "eslint plugin",
-    "prepublish": "babel -d build/ plugin/"
+    "prepare": "babel -d build/ plugin/"
   },
   "dependencies": {
     "require-resolve": "0.0.2"

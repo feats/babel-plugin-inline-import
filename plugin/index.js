@@ -21,21 +21,26 @@ export default function({ types: t }) {
                   reference = BabelInlineImportHelper.transformRelativeToRootPath(reference);
                 }
 
-                const id = path.node.specifiers[0].local.name;
                 const content = BabelInlineImportHelper.getContents(givenPath, reference);
-                const variable = t.variableDeclarator(t.identifier(id), t.stringLiteral(content));
+                if (path.node.specifiers.length > 0) {
+                  const id = path.node.specifiers[0].local.name;
+                  const variable = t.variableDeclarator(t.identifier(id), t.stringLiteral(content));
 
-                path.replaceWith({
-                  type: 'VariableDeclaration',
-                  kind: 'const',
-                  declarations: [variable],
-                  leadingComments: [
-                    {
-                      type: 'CommentBlock',
-                      value: ` babel-plugin-inline-import '${givenPath}' `
-                    }
-                  ]
-                });
+                  path.replaceWith({
+                    type: 'VariableDeclaration',
+                    kind: 'const',
+                    declarations: [variable],
+                    leadingComments: [
+                      {
+                        type: 'CommentBlock',
+                        value: ` babel-plugin-inline-import '${givenPath}' `
+                      }
+                    ]
+                  });
+                } else {
+                  const literal = t.stringLiteral(content);
+                  path.replaceWith(literal);
+                }
               }
             }
           }

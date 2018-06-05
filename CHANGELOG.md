@@ -1,5 +1,15 @@
 # ChangeLog
 
+### v3.0.0
+
+Removed specific Meteor handling that is no longer necessary as of Meteor 1.7.
+
+BREAKING CHANGES: Do not update to this version if you are using this with a Meteor app that is on a version < 1.7. For non-Meteor uses, there are no breaking changes in the 3.0.0 release.
+
+### v2.0.6
+
+Add leading comment indicating original file path
+
 ### v2.0.5
 
 Remove forgotten `debugger` statement in the built files [#5](https://github.com/Quadric/babel-plugin-inline-import/issues/5)

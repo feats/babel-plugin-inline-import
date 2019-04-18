@@ -1,6 +1,15 @@
 {
+  "plugins": ["@babel/plugin-proposal-class-properties"],
   "presets": [
-    "es2015-without-strict",
-    "stage-1"
-  ],
+    [
+      "@babel/preset-env",
+      {
+        "corejs": 2,
+        "useBuiltIns": "usage",
+        "targets": {
+          "node": "6.9.0"
+        }
+      }
+    ]
+  ]
 }

@@ -53,5 +53,44 @@ const SomeExample = "print 1 + 1\\n";`
         );
       }).to.throw(Error);
     });
+
+    it('supports require expressions', () => {
+      const transformedCode = babel.transform(
+        "let SomeExample = require('./fixtures/example.raw');",
+        {
+          filename: __filename,
+          plugins: [BabelInlineImportPlugin]
+        }
+      );
+
+      expect(transformedCode.code).to.equal(`"use strict";
+
+let SomeExample =
+/* babel-plugin-inline-import './fixtures/example.raw' */
+"a raw content\\n";`);
+    });
+
+    it('supports require expressions while accepting different extensions', () => {
+      const transformedCode = babel.transform(
+        "let SomeExample = require('./fixtures/example.py');",
+        {
+          filename: __filename,
+          plugins: [
+            [
+              BabelInlineImportPlugin,
+              {
+                extensions: ['.py']
+              }
+            ]
+          ]
+        }
+      );
+
+      expect(transformedCode.code).to.equal(`"use strict";
+
+let SomeExample =
+/* babel-plugin-inline-import './fixtures/example.py' */
+"print 1 + 1\\n";`);
+    });
   });
 });

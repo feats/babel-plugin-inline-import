@@ -98,6 +98,7 @@ Babel does not track dependency between _imported_ and _importing_ files after t
 
 * If you are using `babel-node` or `babel-register`, you can [disable babel cache (`BABEL_DISABLE_CACHE=1`)](https://babeljs.io/docs/usage/babel-register/#environment-variables-babel-disable-cache).
 * If you are using webpack with `babel-loader`, you can use [babel-inline-import-loader](https://github.com/elliottsj/babel-inline-import-loader).
+* An *alternative library* for webpack is [raw-loader](https://webpack.js.org/loaders/raw-loader/). Advantage = detects changes to imported file w/o additional config or losing babel's cache. Disadvantage: maintain 2 separate configs. E.g. 1) one w/ `raw-loader` for webpack, and 2) another one for babel using `babel-plugin-inline-import`. E.g. if you use a *create-react-app / CRA* based React app, you may have 1) for `yarn start` / webpack and 2) for `yarn test` / babel. For CRA, [craco](https://github.com/gsoft-inc/craco) and [craco-raw-loader](https://github.com/melMass/craco-raw-loader) may help.
 
 Also make sure that your task runner is watching for changes in the _imported file_ as well. You can see it working [here](https://github.com/Quadric/perfect-graphql-starter/blob/master/nodemon.json).
 

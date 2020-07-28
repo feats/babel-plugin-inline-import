@@ -16,9 +16,16 @@ export default function({ types: t }) {
                   throw new Error(`Destructuring inlined import is not allowed. Check the import statement for '${givenPath}'`);
                 }
 
-                const id = path.node.specifiers[0].local.name;
+                const specifier = path.node.specifiers[0];
+                const id = specifier.local.name;
                 const content = BabelInlineImportHelper.getContents(givenPath, reference);
-                const variable = t.variableDeclarator(t.identifier(id), t.stringLiteral(content));
+
+                let variableValue = t.stringLiteral(content);
+                // import * as x from ...
+                if (specifier.type === 'ImportNamespaceSpecifier') {
+                  variableValue = t.objectExpression([t.objectProperty(t.identifier('default'), variableValue)]);
+                }
+                const variable = t.variableDeclarator(t.identifier(id), variableValue);
 
                 path.replaceWith({
                   type: 'VariableDeclaration',

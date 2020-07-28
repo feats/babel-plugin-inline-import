@@ -3,7 +3,7 @@ import * as babel from '@babel/core';
 
 describe('Babel Inline Import - Plugin', () => {
   describe('Babel Plugin', () => {
-    it('transforms the import statement into a variable with the intended content', () => {
+    it('transforms the import default statement into a variable with the intended content', () => {
       const transformedCode = babel.transform(
         "import SomeExample from './fixtures/example.raw';",
         {
@@ -16,6 +16,23 @@ describe('Babel Inline Import - Plugin', () => {
 
 /* babel-plugin-inline-import './fixtures/example.raw' */
 const SomeExample = "a raw content\\n";`);
+    });
+
+    it('transforms the import namespace statement into a variable with the intended content in property "default"', () => {
+      const transformedCode = babel.transform(
+        "import * as SomeExample from './fixtures/example.raw';",
+        {
+          filename: __filename,
+          plugins: [BabelInlineImportPlugin]
+        }
+      );
+
+      expect(transformedCode.code).to.equal(`"use strict";
+
+/* babel-plugin-inline-import './fixtures/example.raw' */
+const SomeExample = {
+  default: "a raw content\\n"
+};`);
     });
 
     it('accepts different extensions', () => {
